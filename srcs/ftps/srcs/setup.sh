@@ -1,9 +1,9 @@
 #!/bin/sh
 telegraf &
-adduser -D "user42" && echo "user42:bla" | chpasswd
-chown -R user42:user42 /home/user42
+adduser -D "admin" && echo "admin" | chpasswd
+chown -R admin:admin /home/admin
 touch /var/log/vsftpd.log
-echo "user42" | tee -a /etc/vsftpd.userlist
+echo "admin" | tee -a /etc/vsftpd.userlist
 mkdir /var/run/vsftpd
 mkdir /var/run/vsftpd/empty
 service vsftpd restart

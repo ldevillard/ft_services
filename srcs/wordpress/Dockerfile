@@ -14,10 +14,7 @@ RUN mkdir /etc/telegraf
 ADD srcs/telegraf.conf /etc/telegraf/
 
 #Key Generat
-RUN	mkdir /run/nginx /www && \
-		chown -R nginx:nginx /www && \
-		openssl req -x509 -nodes -subj '/CN=localhost' -days 365 -newkey rsa:4096 \
-		-keyout /etc/ssl/private/server.key -out /etc/ssl/certs/server.crt
+RUN	mkdir /run/nginx /www && chown -R nginx:nginx /www && openssl req -x509 -nodes -subj '/C=FR/ST=France/L=Lyon/O=42Lyon/OU=logan/CN=localhost' -days 365 -newkey rsa:4096 -keyout /etc/ssl/private/server.key -out /etc/ssl/certs/server.crt
 
 #Install WordPress
 RUN wget -q https://wordpress.org/latest.tar.gz
@@ -29,5 +26,7 @@ RUN	chmod 777 setup.sh
 ADD	srcs/wp-config.php /www/wordpress/.
 
 EXPOSE	5050
+
+RUN ls -laR
 
 CMD		[ "/bin/sh", "/setup.sh" ]

@@ -24,8 +24,7 @@ RUN wget http://files.directadmin.com/services/all/phpMyAdmin/phpMyAdmin-5.0.2-a
 #Key Generate
 RUN mkdir -p var/run/nginx
 COPY ./srcs/nginx.conf /etc/nginx/nginx.conf
-RUN		openssl req -x509 -nodes -subj '/CN=localhost' -days 365 -newkey rsa:4096 \
-		 -keyout /etc/ssl/private/server.key -out /etc/ssl/certs/server.crt
+RUN	openssl req -x509 -nodes -subj '/C=FR/ST=France/L=Lyon/O=42Lyon/OU=logan/CN=localhost' -days 365 -newkey rsa:4096 -keyout /etc/ssl/private/server.key -out /etc/ssl/certs/server.crt
 
 #Add Conf
 COPY srcs/config.inc.php /var/www/phpmyadmin/config.inc.php

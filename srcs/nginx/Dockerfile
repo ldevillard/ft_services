@@ -11,9 +11,8 @@ RUN mkdir /etc/telegraf
 ADD srcs/telegraf.conf /etc/telegraf/
 
 #SSL
-RUN	mkdir /run/nginx /www && \
-		chown -R nginx:nginx /www
-RUN mkdir -p /etc/nginx/ssl && openssl req -newkey rsa:2048 -x509 -days 365 -nodes -keyout /etc/nginx/ssl/services.key -out /etc/nginx/ssl/services.pem -subj "/C=FR/ST=Lyon/L=Lyon/O=42, Inc./OU=IT/CN=ft_services"
+RUN	mkdir /run/nginx /www && chown -R nginx:nginx /www
+RUN mkdir -p /etc/nginx/ssl && openssl req -newkey rsa:2048 -x509 -days 365 -nodes -keyout /etc/nginx/ssl/services.key -out /etc/nginx/ssl/services.pem -subj "/C=FR/ST=France/L=Lyon/O=42Lyon/OU=logan/CN=localhost"
 
 #Add Conf
 RUN	rm etc/nginx/nginx.conf
